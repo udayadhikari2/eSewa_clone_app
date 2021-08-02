@@ -1,6 +1,13 @@
 import React, {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
-import {View, Text, TouchableOpacity, StatusBar} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StatusBar,
+  ScrollView,
+  Animated,
+} from 'react-native';
 import {tabButtonItems} from './TabButtonItems';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
@@ -40,7 +47,7 @@ const TabButton = ({focused, theme, name}) => {
   return (
     <View
       style={{
-        flex: 1,
+        // flex: 1,
         marginTop: 10,
         alignItems: 'center',
       }}>
@@ -63,11 +70,13 @@ const TabButton = ({focused, theme, name}) => {
   );
 };
 
-const Tabs = () => {
+const Tabs = ({scrollY, translateY}) => {
   const [theme, setTheme] = useState(true);
+
   return (
+    // <View style={{height: 70,flex:1,borderWidth:10,bottom:0,}}>
     <NavigationContainer>
-      <StatusBar backgroundColor="#121212" />
+      <StatusBar backgroundColor="#1e1e1e" />
       <Tab.Navigator
         screenOptions={{
           tabBarVisible: true,
@@ -82,7 +91,7 @@ const Tabs = () => {
         }}>
         <Tab.Screen
           name="Home"
-          component={HomeStack}
+          // component={HomeStack}
           options={{
             tabBarIcon: props => {
               return (
@@ -93,8 +102,11 @@ const Tabs = () => {
                 />
               );
             },
-          }}
-        />
+          }}>
+          {props => (
+            <HomeStack {...props} scrollY={scrollY} translateY={translateY} />
+          )}
+        </Tab.Screen>
         <Tab.Screen
           name="Statements"
           options={{
@@ -149,6 +161,7 @@ const Tabs = () => {
         />
       </Tab.Navigator>
     </NavigationContainer>
+    // </View>
   );
 };
 export default Tabs;

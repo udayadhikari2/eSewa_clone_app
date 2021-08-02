@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
 import {View, Image, Text, TouchableHighlight, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
+import {balance, reward} from './data';
 
-function BalanceAndReward() {
+export const Balance = ({SIZE, COLOR, TEXTCOLOR}) => {
   const [Amount, setAmount] = useState(true);
-  const [Reward, setReward] = useState(true);
-  const AmountBlock = 'XXXX.XX';
-  const AmountValue = '111.78';
-  const RewardValue = '128.02';
   const showAmountCheck = () => {
     if (Amount == false) {
       setAmount(true);
@@ -15,6 +12,30 @@ function BalanceAndReward() {
       setAmount(false);
     }
   };
+  return (
+    <TouchableHighlight onPress={showAmountCheck}>
+      <View style={styles.BalanceCheck}>
+        <Icon name="wallet-outline" size={SIZE} color={COLOR} />
+        <View style={styles.Balance}>
+          <Text style={{color: TEXTCOLOR}}>
+            NPR{' '}
+            {Amount
+              ? balance.map((data, index) => (
+                  <Text key={index}>{data.tapAmount}</Text>
+                ))
+              : balance.map((data, index) => (
+                  <Text key={index}>{data.amount}</Text>
+                ))}
+          </Text>
+          <Text style={{color: 'white'}}>Balance</Text>
+        </View>
+      </View>
+    </TouchableHighlight>
+  );
+};
+
+export const RewardPoints = () => {
+  const [Reward, setReward] = useState(true);
   const showRewardCheck = () => {
     if (Reward == false) {
       setReward(true);
@@ -22,43 +43,34 @@ function BalanceAndReward() {
       setReward(false);
     }
   };
-  const Balance = () => {
-    return (
-      <TouchableHighlight onPress={showAmountCheck}>
-        <View style={styles.BalanceCheck}>
-          <Icon name="wallet-outline" size={20} color="#99e978" />
-          <View style={styles.Balance}>
-            <Text style={{color: 'white'}}>
-              NPR {Amount ? AmountBlock : AmountValue}
-            </Text>
-            <Text style={{color: 'white'}}>Balance</Text>
-          </View>
+  return (
+    <TouchableHighlight onPress={showRewardCheck}>
+      <View style={styles.BalanceCheck}>
+        <View style={styles.Balance}>
+          <Text
+            style={{
+              color: 'white',
+              alignSelf: 'flex-end',
+            }}>
+            {Reward
+              ? reward.map((data, index) => (
+                  <Text key={index}>{data.tapAmount}</Text>
+                ))
+              : reward.map((data, index) => (
+                  <Text key={index}>{data.amount}</Text>
+                ))}
+          </Text>
+          <Text style={{color: 'white'}}>Reward Points</Text>
         </View>
-      </TouchableHighlight>
-    );
-  };
-  const RewardPoints = () => {
-    return (
-      <TouchableHighlight onPress={showRewardCheck}>
-        <View style={styles.BalanceCheck}>
-          <View style={styles.Balance}>
-            <Text
-              style={{
-                color: 'white',
-                alignSelf: 'flex-end',
-              }}>
-              {Reward ? AmountBlock : RewardValue}
-            </Text>
-            <Text style={{color: 'white'}}>Reward Points</Text>
-          </View>
-          <Icon name="ribbon-outline" size={20} color="#99e978" />
-        </View>
-      </TouchableHighlight>
-    );
-  };
+        <Icon name="ribbon-outline" size={20} color="#99e978" />
+      </View>
+    </TouchableHighlight>
+  );
+};
+function BalanceAndReward() {
   return (
     <View style={styles.BalanceContainer}>
-      <Balance />
+      <Balance SIZE={20} COLOR="#99e978" TEXTCOLOR="white" />
       <RewardPoints />
     </View>
   );

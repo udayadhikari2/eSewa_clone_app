@@ -7,12 +7,12 @@ import AllServices from '../components/Services/index';
 import ImageCarousel from '../components/ImageCarousel/index';
 import {PopularService} from '../components/Services/FeaturedServices';
 import RefreshModal from '../components/Notifications/RefreshModal';
-import Tabs from '../navigation/TabBarNavigation';
 
 const wait = timeout => {
   return new Promise(resolve => setTimeout(resolve, timeout));
 };
-function Home() {
+function Home({scrollY, translateY}) {
+  console.log(scrollY, translateY);
   const [refreshing, setRefreshing] = useState(false);
   const [refreshingNotify, setRefreshingNotify] = useState(false);
 
@@ -28,6 +28,12 @@ function Home() {
   }, []);
   return (
     <ScrollView
+      style={{
+        backgroundColor: '#121212',
+      }}
+      onScroll={e => {
+        scrollY.setValue(e.nativeEvent.contentOffset.y);
+      }}
       showsVerticalScrollIndicator={false}
       refreshControl={
         <RefreshControl

@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Home} from '../../screens';
 
 const HomeStackScreen = createStackNavigator();
-export default function HomeStack({navigation, route}) {
+export default function HomeStack({navigation, route, scrollY, translateY}) {
   if (route.name === 'Home') {
     React.useLayoutEffect(() => {
       navigation.setOptions({
@@ -17,7 +17,9 @@ export default function HomeStack({navigation, route}) {
         headerShown: false,
       }}
       initialRouteName="Home">
-      <HomeStackScreen.Screen name="Home" component={Home} />
+      <HomeStackScreen.Screen name="Home">
+        {props => <Home scrollY={scrollY} translateY={translateY} {...props} />}
+      </HomeStackScreen.Screen>
     </HomeStackScreen.Navigator>
   );
 }
