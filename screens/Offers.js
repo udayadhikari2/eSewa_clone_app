@@ -1,20 +1,23 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import HeaderStyle from '../components/HeaderStyleContainer';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
+import {Balance} from '../components/Balance/BalanceAndReward';
+import {Header} from '../components/HeaderStyleContainer';
+import Icon from 'react-native-vector-icons/dist/Ionicons';
 
-function Offers() {
+function Offers({navigation, route}) {
   return (
-    <View style={styles.homeContainer}>
-      <Text>Offer</Text>
-    </View>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={{backgroundColor: '#101010'}}>
+      <Header HEIGHT={50} />
+    </ScrollView>
   );
 }
-const styles = StyleSheet.create({
-  homeContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default Offers;

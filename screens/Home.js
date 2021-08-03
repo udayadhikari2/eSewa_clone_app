@@ -12,7 +12,6 @@ const wait = timeout => {
   return new Promise(resolve => setTimeout(resolve, timeout));
 };
 function Home({scrollY, translateY}) {
-  console.log(scrollY, translateY);
   const [refreshing, setRefreshing] = useState(false);
   const [refreshingNotify, setRefreshingNotify] = useState(false);
 

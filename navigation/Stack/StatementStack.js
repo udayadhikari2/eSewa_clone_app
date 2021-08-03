@@ -38,7 +38,7 @@ export default function StatementStack({navigation, route}) {
             return (
               <TouchableOpacity
                 style={{marginHorizontal: 20}}
-                onPress={() => navigation.goBack()}>
+                onPress={() => navigation.navigate('Home')}>
                 <Icon name="arrow-back-outline" size={25} color="white" />
               </TouchableOpacity>
             );
@@ -53,7 +53,7 @@ export default function StatementStack({navigation, route}) {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={{marginHorizontal: 20}}
-                  onPress={() => navigation.goBack()}>
+                  onPress={() => navigation.navigate('Home')}>
                   <Icon name="document-outline" size={27} color="white" />
                 </TouchableOpacity>
               </View>

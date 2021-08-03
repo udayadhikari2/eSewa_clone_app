@@ -14,6 +14,10 @@ target 'esewa_clone_app' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
+  pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
+
   target 'esewa_clone_appTests' do
     inherit! :complete
     # Pods for testing

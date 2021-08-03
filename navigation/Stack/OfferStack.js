@@ -14,15 +14,32 @@ export default function OfferStack({navigation, route}) {
     }, [navigation]);
   }
   return (
-    <OfferStackScreen.Navigator>
+    <OfferStackScreen.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#1e1e1e',
+          height: 60,
+          shadowColor: 'transparent',
+          shadowRadius: 0,
+          shadowOffset: {
+            height: 0,
+          },
+        },
+        headerTintColor: 'white',
+        headerTitleStyle: {
+          fontSize: 16,
+          letterSpacing: 0.5,
+          fontWeight: 'normal',
+        },
+      }}>
       <OfferStackScreen.Screen
         options={{
           headerLeft: () => {
             return (
               <TouchableOpacity
                 style={{marginHorizontal: 20}}
-                onPress={() => navigation.goBack()}>
-                <Icon name="arrow-back-outline" size={25} color="black" />
+                onPress={() => navigation.navigate('Home')}>
+                <Icon name="arrow-back-outline" size={25} color="white" />
               </TouchableOpacity>
             );
           },

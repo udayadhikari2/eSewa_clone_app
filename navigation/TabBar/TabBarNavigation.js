@@ -12,6 +12,7 @@ import {tabButtonItems} from './TabButtonItems';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {HomeStack, StatementStack, PaymentStack, OfferStack} from '../Stack';
+import ScanAndPay from '../../screens/ScanAndPay';
 const Tab = createBottomTabNavigator();
 
 const QRCode = ({theme, onPress}) => {
@@ -31,8 +32,7 @@ const QRCode = ({theme, onPress}) => {
           width: 55,
           height: 55,
           borderRadius: 70,
-
-          backgroundColor: '#99e978',
+          backgroundColor: 'red',
         }}>
         <Ionicons
           name="qr-code-outline"
@@ -74,7 +74,6 @@ const Tabs = ({scrollY, translateY}) => {
   const [theme, setTheme] = useState(true);
 
   return (
-    // <View style={{height: 70,flex:1,borderWidth:10,bottom:0,}}>
     <NavigationContainer>
       <StatusBar backgroundColor="#1e1e1e" />
       <Tab.Navigator
@@ -126,7 +125,7 @@ const Tabs = ({scrollY, translateY}) => {
         </Tab.Screen>
         <Tab.Screen
           name="ScanAndPay"
-          component={OfferStack}
+          component={ScanAndPay}
           options={{
             tabBarButton: props => <QRCode {...props} theme={theme} />,
           }}
@@ -161,7 +160,6 @@ const Tabs = ({scrollY, translateY}) => {
         />
       </Tab.Navigator>
     </NavigationContainer>
-    // </View>
   );
 };
 export default Tabs;
