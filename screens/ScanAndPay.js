@@ -1,6 +1,6 @@
 'use strict';
 import React, {useState} from 'react';
-import {Dimensions} from 'react-native';
+import {Dimensions, View} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {QRCodeTop, QRCodeBottom} from '../components/ScanQRCode';

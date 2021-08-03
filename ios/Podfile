@@ -18,6 +18,8 @@ target 'esewa_clone_app' do
 
   pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
 
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
   target 'esewa_clone_appTests' do
     inherit! :complete
     # Pods for testing
